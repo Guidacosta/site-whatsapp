@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Suporte no WhatsApp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #020617;
+      color: white;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    button {
+      padding: 20px 40px;
+      font-size: 22px;
+      cursor: pointer;
+      background: #22c55e;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="abrirWhatsapp()">Fale conosco pelo WhatsApp</button>
+
+  <script>
+    const numeros = [
+      "5511978761883", // SEU WHATSAPP
+      "5511992564902"  // WHATSAPP DO SEU AMIGO
+    ];
+
+    function abrirWhatsapp() {
+      let ultimo = localStorage.getItem("ultimoAtendido");
+      let proximo = ultimo === "0" ? 1 : 0;
+
+      localStorage.setItem("ultimoAtendido", proximo);
+
+      let numero = numeros[proximo];
+      window.location.href = `https://wa.me/${numero}?text=Oi,%20vim%20pelo%20site%20e%20preciso%20de%20suporte`;
+    }
+  </script>
+
+</body>
+</html>
