@@ -160,23 +160,25 @@
     </div>
   </main>
 
-  <script>
-    const numeros = [
-      "5511978761883", // SEU WHATSAPP
-      "5511997227028"  // WHATSAPP DO SEU AMIGO
-    ];
+ <script>
+  const numeros = [
+    "5511978761833",
+    "5511992564902"
+  ];
 
-    function abrirWhatsapp() {
-      let ultimo = localStorage.getItem("ultimoAtendido");
-      let proximo = ultimo === "0" ? 1 : 0;
+  function abrirWhatsapp() {
+    let ultimo = localStorage.getItem("ultimoAtendido");
 
-      localStorage.setItem("ultimoAtendido", proximo);
-
-      const numero = numeros[proximo];
-      const msg = encodeURIComponent("Oi! Vim pelo Instagram e gostaria de atendimento da Bravo Roots.");
-      window.location.href = `https://wa.me/${numero}?text=${msg}`;
+    if (ultimo === null) {
+      // escolhe aleatoriamente quem começa
+      ultimo = Math.random() < 0.5 ? "0" : "1";
     }
-  </script>
 
-</body>
-</html>
+    const proximo = ultimo === "0" ? 1 : 0;
+    localStorage.setItem("ultimoAtendido", proximo);
+
+    const numero = numeros[proximo];
+    const msg = encodeURIComponent("Oi! Vim pelo Instagram e gostaria de atendimento da Bravo Roots.");
+    window.location.href = `https://wa.me/${numero}?text=${msg}`;
+  }
+</script>
